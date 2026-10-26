@@ -108,6 +108,53 @@ return {
                     '{C:inactive}(Currently {X:mult,C:white}X#2#{C:inactive} Mult)'
                 }
             },
+            j_aws_oops_all_ones = {
+                name = 'Oops, All 1\'s!',
+                text = {
+                    'Halves all {C:attention}listed',
+                    '{C:green,E:1,S:1.1}probabilities',
+                    '{C:inactive}(ex: {C:green}1 in 2{C:inactive} -> {C:green}1 in 4{C:inactive})'
+                }
+            },
+            j_aws_shy = {
+                name = 'Shy',
+                text = {
+                    'Each played {C:attention}Ace{} and {C:attention}10{}',
+                    'gives {X:mult,C:white}X#1#{} Mult when scored'
+                }
+            },
+            j_aws_pit = {
+                name = 'Pit',
+                text = {
+                    'Each played card that',
+                    'does not score gives',
+                    '{X:mult,C:white}X#1#{} Mult'
+                }
+            },
+            j_aws_pristine = {
+                name = 'Pristine',
+                text = {
+                    'Each played card with no',
+                    '{C:attention}Enhancement{} gives',
+                    '{C:chips}+#1#{} Chips when scored'
+                }
+            },
+            j_aws_nice_joker = {
+                name = 'Nice Joker',
+                text = {
+                    'Each played {C:attention}6{} or {C:attention}9{} gives',
+                    '{C:mult}+#1#{} Mult and {C:chips}+#2#{} Chips',
+                    'when scored'
+                }
+            },
+            j_aws_musician = {
+                name = 'Musician',
+                text = {
+                    '{C:green}#1# in #2#{} chance to earn',
+                    '{C:money}$#3#{} at end of round,',
+                    'otherwise earn {C:money}$#4#{}'
+                }
+            },
         }
     }
 }
