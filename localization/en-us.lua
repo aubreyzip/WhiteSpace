@@ -99,6 +99,15 @@ return {
                     '{C:inactive}(Currently {C:attention}#1#{C:inactive})'
                 }
             },
+            j_aws_scapegoat = {
+                name = 'Scapegoat',
+                text = {
+                    'Gains {X:mult,C:white}X#1#{} Mult for each',
+                    'consecutive shop left',
+                    'without buying a {C:attention}Joker{}',
+                    '{C:inactive}(Currently {X:mult,C:white}X#2#{C:inactive} Mult)'
+                }
+            },
         }
     }
 }
