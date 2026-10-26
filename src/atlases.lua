@@ -34,6 +34,13 @@ SMODS.Atlas({
 })
 
 SMODS.Atlas({
+    key = 'white_space',
+    path = 'white_space.png',
+    px = 71,
+    py = 95
+})
+
+SMODS.Atlas({
     key = "delinquent_animation",
     path = "delinquent_animation.png",
     px = 71,

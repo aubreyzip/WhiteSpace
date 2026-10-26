@@ -90,6 +90,15 @@ return {
                     "to give {C:money}$1{}"
                 }
             },
+            j_aws_white_space = {
+                name = 'White Space',
+                text = {
+                    'Copies the ability of a random',
+                    '{C:attention}Joker{} you do not own',
+                    'Changes after each {C:attention}round{}',
+                    '{C:inactive}(Currently {C:attention}#1#{C:inactive})'
+                }
+            },
         }
     }
 }
