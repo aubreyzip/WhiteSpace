@@ -1,7 +1,7 @@
 return {
     descriptions = {
         Joker = {
-            j_aws_vitamin = {
+            j_aws_vitamins = {
                 name = 'Vitamins',
                 text = {
                     '{C:chips}+#1#{} Chips and {C:mult}+#2#{} Mult',
