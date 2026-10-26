@@ -13,6 +13,7 @@
         "pseudoseed",
         "pseudorandom_element",
         "create_card",
-        "card_eval_status_text"
+        "card_eval_status_text",
+        "sendWarnMessage"
     ]
 }
