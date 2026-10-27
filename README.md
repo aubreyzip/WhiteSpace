@@ -4,7 +4,7 @@ Aubrey's White Space is a Balatro content mod featuring custom Jokers, consumabl
 
 Currently adds 19 jokers: 1 legendary, 5 rare, 5 uncommon and 8 common.
 
-**[Aubrey's White Space mod website](https://white-space-wiki.vercel.app)**
+**[Aubrey's White Space mod website](https://white-space-wiki.vercel.app)** ([alternative link](https://whitespacewiki.netlify.app))
 
 ## Requirements
 
