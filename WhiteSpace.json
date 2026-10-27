@@ -2,7 +2,7 @@
     "id":"WhiteSpace",
     "name":"White Space",
     "author": ["Aubrey"],
-    "description": "My first mod filled with random stuff I'm into",
+    "description": "A balatro content mod filled with random stuff I'm into",
     "prefix": "aws",
     "main_file": "main.lua",
     "priority": 0,
