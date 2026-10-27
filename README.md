@@ -24,7 +24,7 @@ Use versions compatible with your installed Balatro version and follow the offic
 ## Credits
 
 - **@Aubreyzip** Creator and developer.
-- **@CostlessBea** Forgotten man and Hopeker joker arts.
+- **@CostlessBea** Forgotten man, Hopeker and Scapegoat joker arts.
 - **@faeryth** Main menu theme.
 
 Thanks to the Balatro and Steamodded modding communities for their tools and documentation.
