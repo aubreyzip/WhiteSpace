@@ -34,9 +34,9 @@ end
 SMODS.Joker({
     key = 'audience',
     atlas = 'aws_placeholders',
-    pos = { x = 2, y = 0 },
+    pos = { x = 1, y = 0 },
 
-    rarity = 3,
+    rarity = 2,
     cost = 6,
     
     config = {

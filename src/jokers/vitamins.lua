@@ -5,7 +5,7 @@ SMODS.Joker({
     pos = {x = 0, y = 0 },
 
     rarity = 1,
-    cost = 5,
+    cost = 3,
 
     config = {
         extra = {
@@ -21,7 +21,7 @@ SMODS.Joker({
         name = 'Vitamins',
         text = {
             '{C:chips}+#1#{} Chips and {C:mult}+#2#{} Mult',
-            '{C:chips}-5{} Chips and {C:mult}-1{} Mult',
+            '{C:chips}-10{} Chips and {C:mult}-2{} Mult',
             'each played hand'
         }
     },

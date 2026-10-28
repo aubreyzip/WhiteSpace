@@ -8,7 +8,7 @@ SMODS.Joker({
     },
 
     rarity = 3,
-    cost = 6,
+    cost = 8,
 
     loc_txt = {
         name = 'Delinquent',

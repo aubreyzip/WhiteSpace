@@ -4,7 +4,7 @@ SMODS.Joker({
     pos = { x = 0, y = 0 },
 
     rarity = 3,
-    cost = 6,
+    cost = 7,
 
     config = {
         extra = {
