@@ -17,6 +17,7 @@
         "sendWarnMessage",
         "create_toggle",
         "UIBox_button",
-        
+        "play_sound",
+        "set_discover_tallies"
     ]
 }

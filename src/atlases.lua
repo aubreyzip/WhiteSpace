@@ -56,3 +56,10 @@ SMODS.Atlas({
     frames = 4,
     fps = 4
 })
+
+SMODS.Atlas({
+    key = 'modicon',
+    path = 'mod_icon.png',
+    px = 34,
+    py = 34
+})
