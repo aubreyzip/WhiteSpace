@@ -156,5 +156,34 @@ return {
                 }
             },
         }
+    },
+    misc = {
+        dictionary = {
+            aws_config_menu_theme = "Enable Custom Main Menu Theme",
+            aws_config_menu_theme_info = {
+                "Monochrome background and Delinquent title card",
+                "The title card updates the next time the main menu loads"
+            },
+            aws_config_menu_animation = "Enable Main Menu Animation",
+            aws_config_menu_animation_info = {
+                "Animates the custom theme's background and title card",
+                "Has no effect while the custom theme is off"
+            },
+            aws_config_menu_music = "Enable Custom Main Menu Music",
+            aws_config_menu_music_info = {
+                "Plays White Space's main menu theme instead of vanilla's"
+            },
+            aws_config_jokers = "Enable Aubrey's White Space Jokers",
+            aws_config_jokers_info = {
+                "When off, White Space Jokers stop appearing in shops,",
+                "packs and other random Joker generation",
+                "Jokers you already own keep working"
+            },
+            aws_config_discover = "Discover All White Space Jokers"
+        },
+        v_dictionary = {
+            aws_discover_done = "Discovered #1# Jokers (#2# White Space Jokers total)",
+            aws_discover_none = "All #2# White Space Jokers are already discovered"
+        }
     }
 }
