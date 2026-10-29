@@ -155,6 +155,14 @@ return {
                     'otherwise earn {C:money}$#4#{}'
                 }
             },
+            j_aws_luminous = {
+                name = 'Luminous',
+                text = {
+                    'Using a {C:planet}Planet{} card',
+                    'upgrades its poker hand',
+                    '{C:attention}1{} additional time'
+                }
+            },
         }
     },
     misc = {
