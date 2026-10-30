@@ -179,6 +179,20 @@ return {
                     'in every shop'
                 }
             },
+            v_aws_overpack = {
+                name = 'Overpack',
+                text = {
+                    '{C:attention}+#1#{} Booster Pack',
+                    'available in every shop'
+                }
+            },
+            v_aws_overpack_plus = {
+                name = 'Overpack Plus',
+                text = {
+                    '{C:attention}+#1#{} Booster Pack',
+                    'available in every shop'
+                }
+            },
         }
     },
     misc = {
