@@ -22,16 +22,25 @@ end
 
 local discover_status = { text = '' }
 
--- Mirrors vanilla discover_card, minus its seeded run check and run stats
-G.FUNCS.aws_discover_jokers = function(e)
+-- The registries G:save_progress persists discovery for. P_CENTERS covers Jokers,
+-- Vouchers, consumables, Decks, Enhancements, Editions and Boosters
+local discoverable_registries = { 'P_CENTERS', 'P_BLINDS', 'P_TAGS', 'P_SEALS' }
+
+-- Mirrors vanilla discover_card, minus its seeded run check and run stats.
+-- original_mod is only set on objects a mod creates, never on take_ownership,
+-- so vanilla and other mods' content is skipped. Only discovered is set;
+-- unlocked is left alone, so locked content stays locked
+G.FUNCS.aws_discover_everything = function(e)
     local total, discovered = 0, 0
-    for _, center in pairs(G.P_CENTERS) do
-        if is_white_space_joker(center) and not center.wip then
-            total = total + 1
-            if not center.discovered then
-                center.discovered = true
-                center.alert = true
-                discovered = discovered + 1
+    for _, registry in ipairs(discoverable_registries) do
+        for _, obj in pairs(G[registry] or {}) do
+            if type(obj) == 'table' and obj.original_mod == mod and not obj.wip then
+                total = total + 1
+                if not obj.discovered then
+                    obj.discovered = true
+                    obj.alert = true
+                    discovered = discovered + 1
+                end
             end
         end
     end
@@ -92,7 +101,7 @@ mod.config_tab = function()
             }),
             UIBox_button({
                 label = { localize('aws_config_discover') },
-                button = 'aws_discover_jokers',
+                button = 'aws_discover_everything',
                 colour = G.C.BLUE,
                 minw = 5,
                 scale = 0.4
