@@ -9,6 +9,11 @@ for _, file in ipairs(SMODS.NFS.getDirectoryItems(SMODS.current_mod.path .. "src
     assert(SMODS.load_file("src/jokers/" .. file))()
 end
 
+-- Aubrey's White Space: vouchers
+for _, file in ipairs(SMODS.NFS.getDirectoryItems(SMODS.current_mod.path .. "src/vouchers")) do
+    assert(SMODS.load_file("src/vouchers/" .. file))()
+end
+
 -- Aubrey's White Space: config menu, Joker pool toggle and discovery
 assert(SMODS.load_file("src/settings.lua"))()
 

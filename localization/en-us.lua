@@ -163,6 +163,22 @@ return {
                     '{C:attention}1{} additional time'
                 }
             },
+        },
+        Voucher = {
+            v_aws_oversupply = {
+                name = 'Oversupply',
+                text = {
+                    '{C:attention}+#1#{} Voucher available',
+                    'in every shop'
+                }
+            },
+            v_aws_oversupply_plus = {
+                name = 'Oversupply Plus',
+                text = {
+                    '{C:attention}+#1#{} Voucher available',
+                    'in every shop'
+                }
+            },
         }
     },
     misc = {
@@ -187,11 +203,11 @@ return {
                 "packs and other random Joker generation",
                 "Jokers you already own keep working"
             },
-            aws_config_discover = "Discover All White Space Jokers"
+            aws_config_discover = "Discover Everything"
         },
         v_dictionary = {
-            aws_discover_done = "Discovered #1# Jokers (#2# White Space Jokers total)",
-            aws_discover_none = "All #2# White Space Jokers are already discovered"
+            aws_discover_done = "Discovered #1# items (#2# White Space items total)",
+            aws_discover_none = "All #2# White Space items are already discovered"
         }
     }
 }
