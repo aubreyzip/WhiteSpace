@@ -22,6 +22,7 @@ return {
                     'When defeated, prevent loss',
                     'and give the Joker to the right',
                     'a random {C:dark_edition}Edition{}',
+                    '{C:red}Self destructs{}',
                     '{C:inactive}(Inject hopium)'
                 }
             },
@@ -217,7 +218,8 @@ return {
                 "packs and other random Joker generation",
                 "Jokers you already own keep working"
             },
-            aws_config_discover = "Discover Everything"
+            aws_config_discover = "Discover Everything",
+            aws_saved_by_hopeker = "Saved by Hopeker"
         },
         v_dictionary = {
             aws_discover_done = "Discovered #1# items (#2# White Space items total)",

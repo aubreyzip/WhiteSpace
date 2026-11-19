@@ -38,7 +38,9 @@ SMODS.Joker({
 
     rarity = 2,
     cost = 6,
-    
+
+    blueprint_compat = false,
+
     config = {
         extra = {
             applied_bonus = 0

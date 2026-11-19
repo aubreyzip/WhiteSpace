@@ -6,6 +6,9 @@ SMODS.Joker({
     rarity = 3,
     cost = 7,
 
+    blueprint_compat = false,
+    eternal_compat = false,
+
     config = {
         extra = {
             used = false
@@ -18,12 +21,15 @@ SMODS.Joker({
             'When defeated, prevent loss',
             'and give the Joker to the right',
             'a random {C:dark_edition}Edition{}',
+            '{C:red}Self destructs{}',
             '{C:inactive}(Inject hopium)'
         }
     },
 
     calculate = function(self, card, context)
-        if context.game_over
+        if context.end_of_round
+            and context.game_over
+            and context.main_eval
             and not context.blueprint
             and not card.ability.extra.used then
 
@@ -53,8 +59,19 @@ SMODS.Joker({
                 end
             end
 
+            -- Flash the score display and destroy this card, like Mr. Bones
+            G.E_MANAGER:add_event(Event({
+                func = function()
+                    G.hand_text_area.blind_chips:juice_up()
+                    G.hand_text_area.game_chips:juice_up()
+                    play_sound('tarot1')
+                    return true
+                end
+            }))
+            SMODS.destroy_cards(card)
+
             return {
-                saved = true,
+                saved = 'aws_saved_by_hopeker',
                 message = 'Hopium!',
                 colour = G.C.GREEN
             }

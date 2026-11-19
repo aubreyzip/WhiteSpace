@@ -1,3 +1,29 @@
+local function spawn_egg()
+    if #G.jokers.cards + G.GAME.joker_buffer >= G.jokers.config.card_limit then
+        return
+    end
+
+    G.GAME.joker_buffer = G.GAME.joker_buffer + 1
+    G.E_MANAGER:add_event(Event({
+        trigger = 'after',
+        delay = 0.2,
+        func = function()
+            SMODS.add_card({
+                set = 'Joker',
+                key = 'j_egg',
+                area = G.jokers
+            })
+            G.GAME.joker_buffer = 0
+            return true
+        end
+    }))
+
+    return {
+        message = 'Egg!',
+        colour = G.C.ORANGE
+    }
+end
+
 SMODS.Joker({
     key = 'forgotten_man',
     atlas = 'aws_forgotten_man',
@@ -5,6 +31,8 @@ SMODS.Joker({
 
     rarity = 3,
     cost = 10,
+
+    blueprint_compat = true,
 
     config = {
         extra = {
@@ -31,24 +59,7 @@ SMODS.Joker({
 
             extra.bought_egg = true
             extra.last_ante = G.GAME.round_resets.ante
-
-            G.E_MANAGER:add_event(Event({
-                trigger = 'after',
-                delay = 0.2,
-                func = function()
-                    SMODS.add_card({
-                        set = 'Joker',
-                        key = 'j_egg',
-                        area = G.jokers
-                    })
-                    return true
-                end
-            }))
-
-            return {
-                message = 'Egg!',
-                colour = G.C.ORANGE
-            }
+            return spawn_egg()
         end
 
         if context.ante_change
@@ -57,24 +68,7 @@ SMODS.Joker({
             and extra.last_ante ~= G.GAME.round_resets.ante then
 
             extra.last_ante = G.GAME.round_resets.ante
-
-            G.E_MANAGER:add_event(Event({
-                trigger = 'after',
-                delay = 0.2,
-                func = function()
-                    SMODS.add_card({
-                        set = 'Joker',
-                        key = 'j_egg',
-                        area = G.jokers
-                    })
-                    return true
-                end
-            }))
-
-            return {
-                message = 'Egg!',
-                colour = G.C.ORANGE
-            }
+            return spawn_egg()
         end
     end
 })

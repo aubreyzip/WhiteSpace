@@ -4,15 +4,24 @@ assert(SMODS.load_file("src/sounds.lua"))()
 -- Aubrey's White Space: Atlases
 assert(SMODS.load_file("src/atlases.lua"))()
 
--- Aubrey's White Space: jokers
-for _, file in ipairs(SMODS.NFS.getDirectoryItems(SMODS.current_mod.path .. "src/jokers")) do
-    assert(SMODS.load_file("src/jokers/" .. file))()
+local function load_folder(folder)
+    local files = {}
+    for _, file in ipairs(SMODS.NFS.getDirectoryItems(SMODS.current_mod.path .. folder)) do
+        if file:match("%.lua$") then
+            files[#files + 1] = file
+        end
+    end
+    table.sort(files)
+    for _, file in ipairs(files) do
+        assert(SMODS.load_file(folder .. "/" .. file))()
+    end
 end
 
+-- Aubrey's White Space: jokers
+load_folder("src/jokers")
+
 -- Aubrey's White Space: vouchers
-for _, file in ipairs(SMODS.NFS.getDirectoryItems(SMODS.current_mod.path .. "src/vouchers")) do
-    assert(SMODS.load_file("src/vouchers/" .. file))()
-end
+load_folder("src/vouchers")
 
 -- Aubrey's White Space: config menu, Joker pool toggle and discovery
 assert(SMODS.load_file("src/settings.lua"))()
