@@ -8,15 +8,6 @@ SMODS.Joker({
 
     blueprint_compat = true,
 
-    loc_txt = {
-        name = 'Luminous',
-        text = {
-            'Using a {C:planet}Planet{} card',
-            'upgrades its poker hand',
-            '{C:attention}1{} additional time'
-        }
-    },
-
     calculate = function(self, card, context)
         if context.using_consumeable
             and context.consumeable

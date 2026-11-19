@@ -17,16 +17,6 @@ SMODS.Joker({
         }
     },
 
-    loc_txt = {
-        name = 'Scapegoat',
-        text = {
-            'Gains {X:mult,C:white}X#1#{} Mult for each',
-            'consecutive shop left',
-            'without buying a {C:attention}Joker{}',
-            '{C:inactive}(Currently {X:mult,C:white}X#2#{C:inactive} Mult)'
-        }
-    },
-
     loc_vars = function(self, info_queue, card)
         local extra = card.ability.extra
         return {

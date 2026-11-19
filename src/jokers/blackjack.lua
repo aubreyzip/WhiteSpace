@@ -1,3 +1,17 @@
+local function card_value(playing_card)
+    if SMODS.has_no_rank(playing_card) then
+        return 0, false
+    end
+
+    local id = playing_card:get_id()
+    if id == 14 then
+        return 11, true
+    elseif id >= 11 then
+        return 10, false
+    end
+    return id, false
+end
+
 SMODS.Joker({
     key = 'blackjack',
     atlas = 'aws_placeholders',
@@ -8,47 +22,20 @@ SMODS.Joker({
 
     blueprint_compat = true,
 
-    config = {
-        extra = {
-            triggered = false
-        }
-    },
-
-    loc_txt = {
-        name = 'Blackjack',
-        text = {
-            'Earn {C:money}$5{} if first hand',
-            'sum totals {C:attention}21{}',
-            '{C:inactive}Including non-scoring cards{}'
-        }
-    },
-
     calculate = function(self, card, context)
-        if context.setting_blind then
-            card.ability.extra.triggered = false
-        end
-
         if context.after
             and context.main_eval
             and not context.blueprint
-            and not card.ability.extra.triggered then
-
-            card.ability.extra.triggered = true
+            and G.GAME.current_round.hands_played == 0 then
 
             local total = 0
             local aces = 0
 
             for _, playing_card in ipairs(context.full_hand or {}) do
-                local value = playing_card.base.value
-                local id = playing_card.base.id
-
-                if value == 'Ace' then
-                    total = total + 11
+                local value, is_ace = card_value(playing_card)
+                total = total + value
+                if is_ace then
                     aces = aces + 1
-                elseif id >= 11 then
-                    total = total + 10
-                else
-                    total = total + id
                 end
             end
 

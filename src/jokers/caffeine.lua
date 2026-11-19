@@ -12,14 +12,6 @@ SMODS.Joker({
         }
     },
 
-    loc_txt = {
-        name = 'Caffeine',
-        text = {
-            '{C:green}#1# in #2#{} chance to',
-            'retrigger each played card'
-        }
-    },
-
     loc_vars = function(self, info_queue, card)
         return {
             vars = {

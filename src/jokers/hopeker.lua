@@ -15,17 +15,6 @@ SMODS.Joker({
         }
     },
 
-    loc_txt = {
-        name = 'Hopeker',
-        text = {
-            'When defeated, prevent loss',
-            'and give the Joker to the right',
-            'a random {C:dark_edition}Edition{}',
-            '{C:red}Self destructs{}',
-            '{C:inactive}(Inject hopium)'
-        }
-    },
-
     calculate = function(self, card, context)
         if context.end_of_round
             and context.game_over

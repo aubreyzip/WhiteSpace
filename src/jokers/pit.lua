@@ -14,15 +14,6 @@ SMODS.Joker({
         }
     },
 
-    loc_txt = {
-        name = 'Pit',
-        text = {
-            'Each played card that',
-            'does not score gives',
-            '{X:mult,C:white}X#1#{} Mult'
-        }
-    },
-
     loc_vars = function(self, info_queue, card)
         return {
             vars = { card.ability.extra.x_mult }

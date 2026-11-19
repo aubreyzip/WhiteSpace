@@ -15,15 +15,6 @@ SMODS.Joker({
         }
     },
 
-    loc_txt = {
-        name = 'Nice Joker',
-        text = {
-            'Each played {C:attention}6{} or {C:attention}9{} gives',
-            '{C:mult}+#1#{} Mult and {C:chips}+#2#{} Chips',
-            'when scored'
-        }
-    },
-
     loc_vars = function(self, info_queue, card)
         return {
             vars = {

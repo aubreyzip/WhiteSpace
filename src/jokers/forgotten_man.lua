@@ -41,15 +41,6 @@ SMODS.Joker({
         }
     },
 
-    loc_txt = {
-        name = 'Forgotten Man',
-        text = {
-            'Create an {C:attention}Egg{} when purchased',
-            'and at the start of each {C:attention}Ante{}',
-            '{C:inactive}There is not a man there..{}'
-        }
-    },
-
     calculate = function(self, card, context)
         local extra = card.ability.extra
 

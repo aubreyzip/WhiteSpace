@@ -14,14 +14,6 @@ SMODS.Voucher({
         }
     },
 
-    loc_txt = {
-        name = 'Overpack',
-        text = {
-            '{C:attention}+#1#{} Booster Pack',
-            'available in every shop'
-        }
-    },
-
     loc_vars = function(self, info_queue, card)
         return { vars = { card.ability.extra.boosters } }
     end,
@@ -46,14 +38,6 @@ SMODS.Voucher({
     config = {
         extra = {
             boosters = 1
-        }
-    },
-
-    loc_txt = {
-        name = 'Overpack Plus',
-        text = {
-            '{C:attention}+#1#{} Booster Pack',
-            'available in every shop'
         }
     },
 

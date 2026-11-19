@@ -5,7 +5,7 @@ return {
                 name = 'Vitamins',
                 text = {
                     '{C:chips}+#1#{} Chips and {C:mult}+#2#{} Mult',
-                    '{C:chips}-10{} Chips and {C:mult}-2{} Mult',
+                    '{C:chips}-#3#{} Chips and {C:mult}-#4#{} Mult',
                     'each played hand'
                 }
             },
@@ -29,9 +29,9 @@ return {
             j_aws_delinquent = {
                 name = 'Delinquent',
                 text = {
-                    'Gain {X:mult,C:white}X0.5{} Mult',
-                    'for every {C:money}$5{} below {C:money}$25{}',
-                    '{C:inactive}Currently {X:mult,C:white}X#1#{} {C:inactive}Mult'
+                    'Gain {X:mult,C:white}X#1#{} Mult',
+                    'for every {C:money}$#2#{} below {C:money}$#3#{}',
+                    '{C:inactive}Currently {X:mult,C:white}X#4#{} {C:inactive}Mult'
                 }
             },
             j_aws_audience = {
@@ -45,17 +45,18 @@ return {
             j_aws_flood = {
                 name = 'Flood',
                 text = {
-                    '{C:chips}+20{} Chips for each',
+                    '{C:chips}+#1#{} Chips for each',
                     'card below {C:attention}#2#{}',
                     'in your full deck',
-                    '{C:inactive}(Currently {C:chips}+#1#{} {C:inactive}Chips)'
+                    '{C:inactive}(Currently {C:chips}+#3#{} {C:inactive}Chips)'
                 }
             },
             j_aws_picnic_basket = {
                 name = 'Picnic Basket',
                 text = {
                     'Create a random {C:tarot}Tarot{} card',
-                    'when a playing card is destroyed'
+                    'for each playing card destroyed',
+                    '{C:inactive}(Must have room)'
                 }
             },
             j_aws_introvert = {
@@ -223,7 +224,8 @@ return {
         },
         v_dictionary = {
             aws_discover_done = "Discovered #1# items (#2# White Space items total)",
-            aws_discover_none = "All #2# White Space items are already discovered"
+            aws_discover_none = "All #2# White Space items are already discovered",
+            aws_plus_tarots = "+#1# Tarot"
         }
     }
 }

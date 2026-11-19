@@ -14,15 +14,6 @@ SMODS.Joker({
         }
     },
 
-    loc_txt = {
-        name = 'Pristine',
-        text = {
-            'Each played card with no',
-            '{C:attention}Enhancement{} gives',
-            '{C:chips}+#1#{} Chips when scored'
-        }
-    },
-
     loc_vars = function(self, info_queue, card)
         return {
             vars = { card.ability.extra.chips }

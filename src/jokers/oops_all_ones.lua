@@ -8,15 +8,6 @@ SMODS.Joker({
 
     blueprint_compat = false,
 
-    loc_txt = {
-        name = 'Oops, All 1\'s!',
-        text = {
-            'Halves all {C:attention}listed',
-            '{C:green,E:1,S:1.1}probabilities',
-            '{C:inactive}(ex: {C:green}1 in 2{C:inactive} -> {C:green}1 in 4{C:inactive})'
-        }
-    },
-
     -- Mirrors vanilla Oops! All 6s, which scales G.GAME.probabilities the same way.
     -- This also covers Jokers that roll against G.GAME.probabilities.normal directly.
     -- Both hooks also run when the card is debuffed / undebuffed.

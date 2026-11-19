@@ -12,16 +12,6 @@ SMODS.Joker({
         }
     },
 
-    loc_txt = {
-        name = 'Flood',
-        text = {
-            '{C:chips}+20{} Chips for each',
-            'card below {C:attention}#2#{}',
-            'in your full deck',
-            '{C:inactive}(Currently {C:chips}+#1#{} {C:inactive}Chips)'
-        }
-    },
-
     loc_vars = function(self, info_queue, card)
         local starting_size = G.GAME and G.GAME.starting_deck_size or 52
         local current_size = G.playing_cards and #G.playing_cards or starting_size
@@ -29,8 +19,9 @@ SMODS.Joker({
 
         return {
             vars = {
-                chips,
-                starting_size
+                card.ability.extra.chip_mod,
+                starting_size,
+                chips
             }
         }
     end,

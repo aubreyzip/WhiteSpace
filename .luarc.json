@@ -1,3 +1,4 @@
 {
-    "workspace.library": ["path/to/smods-26.829.0","path/to/lovely"]
+    "runtime.version": "LuaJIT",
+    "workspace.library": ["../smods-26.829.0", "../lovely/dump"]
 }

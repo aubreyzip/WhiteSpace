@@ -99,6 +99,66 @@ local function get_phantom(card)
     return card.aws_phantom
 end
 
+local function report_failure(card, key, err)
+    sendWarnMessage(('White Space failed to copy %s: %s'):format(tostring(key), tostring(err)), 'WhiteSpace')
+    card.ability.extra.unsupported = true
+end
+
+local unpack = unpack or table.unpack
+local MAIN_THREAD = {}
+local active_guards = setmetatable({}, { __mode = 'k' })
+
+local function current_thread()
+    return coroutine.running() or MAIN_THREAD
+end
+
+local function pack(...)
+    return { n = select('#', ...), ... }
+end
+
+local guarded_pcall
+
+local function guard_event(event, guard)
+    if type(event) ~= 'table' or type(event.func) ~= 'function' or event.aws_guarded then
+        return
+    end
+    event.aws_guarded = true
+
+    local func = event.func
+    local is_ease = event.trigger == 'ease'
+    event.func = function(...)
+        local results = pack(guarded_pcall(guard.card, guard.key, func, ...))
+        if results[1] then
+            return unpack(results, 2, results.n)
+        end
+
+        report_failure(guard.card, guard.key, results[2])
+        if is_ease then
+            return (...)
+        end
+        return true
+    end
+end
+
+local add_event = EventManager.add_event
+---@diagnostic disable-next-line: duplicate-set-field
+function EventManager:add_event(event, ...)
+    local guard = active_guards[current_thread()]
+    if guard then
+        guard_event(event, guard)
+    end
+    return add_event(self, event, ...)
+end
+
+guarded_pcall = function(card, key, func, ...)
+    local thread = current_thread()
+    local previous = active_guards[thread]
+    active_guards[thread] = { card = card, key = key }
+    local results = pack(pcall(func, ...))
+    active_guards[thread] = previous
+    return unpack(results, 1, results.n)
+end
+
 -- SMODS.blueprint_effect, but an erroring copied Joker only disables the
 -- copy for the rest of the round instead of crashing the game
 local function safe_blueprint_effect(card, phantom, context)
@@ -107,7 +167,8 @@ local function safe_blueprint_effect(card, phantom, context)
     local old_copier = context.blueprint_copier
     local old_stack_size = context.blueprint_copiers_stack and #context.blueprint_copiers_stack
 
-    local ok, ret = pcall(SMODS.blueprint_effect, card, phantom, context)
+    local key = phantom.config.center.key
+    local ok, ret = guarded_pcall(card, key, SMODS.blueprint_effect, card, phantom, context)
     if ok then return ret end
 
     context.blueprint = old_blueprint
@@ -119,8 +180,7 @@ local function safe_blueprint_effect(card, phantom, context)
         end
     end
 
-    sendWarnMessage(('White Space failed to copy %s: %s'):format(tostring(phantom.config.center.key), tostring(ret)), 'WhiteSpace')
-    card.ability.extra.unsupported = true
+    report_failure(card, key, ret)
 end
 
 -- Credit effects the phantom returns about itself to White Space
@@ -140,10 +200,10 @@ local function owned_effect(card, phantom, context)
     -- Messages the phantom shows on itself (e.g. SMODS.scale_card) appear on White Space
     phantom:hard_set_T(card.T.x, card.T.y, card.T.w, card.T.h)
 
-    local ok, ret, triggered = pcall(phantom.calculate_joker, phantom, context)
+    local key = phantom.config.center.key
+    local ok, ret, triggered = guarded_pcall(card, key, phantom.calculate_joker, phantom, context)
     if not ok then
-        sendWarnMessage(('White Space failed to copy %s: %s'):format(tostring(phantom.config.center.key), tostring(ret)), 'WhiteSpace')
-        card.ability.extra.unsupported = true
+        report_failure(card, key, ret)
         return
     end
 
@@ -165,16 +225,6 @@ SMODS.Joker({
         extra = {
             copied_key = nil,
             unsupported = false
-        }
-    },
-
-    loc_txt = {
-        name = 'White Space',
-        text = {
-            'Copies the ability of a random',
-            '{C:attention}Joker{} you do not own',
-            'Changes after each {C:attention}round{}',
-            '{C:inactive}(Currently {C:attention}#1#{C:inactive})'
         }
     },
 

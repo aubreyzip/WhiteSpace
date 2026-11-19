@@ -20,14 +20,6 @@ SMODS.Voucher({
         }
     },
 
-    loc_txt = {
-        name = 'Oversupply',
-        text = {
-            '{C:attention}+#1#{} Voucher available',
-            'in every shop'
-        }
-    },
-
     loc_vars = function(self, info_queue, card)
         return { vars = { card.ability.extra.vouchers } }
     end,
@@ -52,14 +44,6 @@ SMODS.Voucher({
     config = {
         extra = {
             vouchers = 1
-        }
-    },
-
-    loc_txt = {
-        name = 'Oversupply Plus',
-        text = {
-            '{C:attention}+#1#{} Voucher available',
-            'in every shop'
         }
     },
 

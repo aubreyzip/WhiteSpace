@@ -2,7 +2,7 @@ local function count_kings()
     local kings = 0
 
     for _, playing_card in ipairs(G.playing_cards or {}) do
-        if playing_card.base.value == 'King' or playing_card.base.id == 13 then
+        if not SMODS.has_no_rank(playing_card) and playing_card:get_id() == 13 then
             kings = kings + 1
         end
     end
@@ -31,6 +31,10 @@ local function update_audience(card)
     end
 end
 
+local function mark_dirty(card)
+    card.aws_audience_dirty = true
+end
+
 SMODS.Joker({
     key = 'audience',
     atlas = 'aws_placeholders',
@@ -44,15 +48,6 @@ SMODS.Joker({
     config = {
         extra = {
             applied_bonus = 0
-        }
-    },
-
-    loc_txt = {
-        name = 'Audience',
-        text = {
-            'Gain {C:attention}+1{} Hand Size for',
-            'every {C:attention}4 Kings{} in deck',
-            '{C:inactive}Currently{} {C:attention}+#1#{} {C:inactive}Hand Size{}'
         }
     },
 
@@ -78,7 +73,28 @@ SMODS.Joker({
         extra.applied_bonus = 0
     end,
 
+    calculate = function(self, card, context)
+        if context.playing_card_added
+            or context.remove_playing_cards
+            or context.change_rank
+            or context.setting_ability
+            or context.setting_blind then
+            mark_dirty(card)
+        end
+    end,
+
     update = function(self, card, dt)
+        if not G.hand or not G.playing_cards then
+            return
+        end
+
+        local deck_size = #G.playing_cards
+        if card.aws_audience_dirty == false and card.aws_audience_deck_size == deck_size then
+            return
+        end
+
+        card.aws_audience_dirty = false
+        card.aws_audience_deck_size = deck_size
         update_audience(card)
     end
 })

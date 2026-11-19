@@ -1,4 +1,3 @@
-
 SMODS.Joker({
     key = 'vitamins',
     atlas = 'aws_vitamins',
@@ -6,6 +5,8 @@ SMODS.Joker({
 
     rarity = 1,
     cost = 3,
+
+    eternal_compat = false,
 
     config = {
         extra = {
@@ -17,20 +18,14 @@ SMODS.Joker({
         }
     },
 
-    loc_txt = {
-        name = 'Vitamins',
-        text = {
-            '{C:chips}+#1#{} Chips and {C:mult}+#2#{} Mult',
-            '{C:chips}-10{} Chips and {C:mult}-2{} Mult',
-            'each played hand'
-        }
-    },
-
     loc_vars = function(self, info_queue, card)
+        local extra = card.ability.extra
         return {
             vars = {
-                card.ability.extra.chips,
-                card.ability.extra.mult
+                extra.chips,
+                extra.mult,
+                extra.chip_mod,
+                extra.mult_mod
             }
         }
     end,

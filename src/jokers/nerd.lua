@@ -1,7 +1,7 @@
 
 SMODS.Joker({
     key = "nerd",
-    atlas = "placeholders",
+    atlas = "aws_placeholders",
     pos = { x = 0, y = 0 },
     
     rarity = 1,
@@ -10,16 +10,6 @@ SMODS.Joker({
     config = {
         extra = {
             odds = 2
-        }
-    },
-
-    loc_txt = {
-        name = "Nerd",
-        text = {
-            "Each {C:attention}number{} card",
-            "held in hand has",
-            "a {C:green}#1# in #2#{} chance",
-            "to give {C:money}$1{}"
         }
     },
 

@@ -6,5 +6,10 @@
     "prefix": "aws",
     "main_file": "main.lua",
     "priority": 0,
-    "version": "0.1.2"
+    "badge_colour": "FFFFFF",
+    "badge_text_colour": "2E2E2E",
+    "version": "0.1.2",
+    "dependencies": [
+        "Steamodded (>=26.829.0)"
+    ]
 }

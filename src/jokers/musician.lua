@@ -16,15 +16,6 @@ SMODS.Joker({
         }
     },
 
-    loc_txt = {
-        name = 'Musician',
-        text = {
-            '{C:green}#1# in #2#{} chance to earn',
-            '{C:money}$#3#{} at end of round,',
-            'otherwise earn {C:money}$#4#{}'
-        }
-    },
-
     loc_vars = function(self, info_queue, card)
         local numerator, denominator = SMODS.get_probability_vars(
             card,
