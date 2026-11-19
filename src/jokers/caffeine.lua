@@ -38,7 +38,7 @@ SMODS.Joker({
             and context.cardarea == G.play
             and not context.retrigger_joker then
 
-            if pseudorandom('aws_caffeine') < G.GAME.probabilities.normal / card.ability.extra.odds then
+            if SMODS.pseudorandom_probability(card, 'aws_caffeine', 1, card.ability.extra.odds, 'aws_caffeine') then
                 return {
                     repetitions = 1,
                     card = card
